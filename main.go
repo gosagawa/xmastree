@@ -24,7 +24,13 @@ func main() {
 }
 
 func usage() {
-	fmt.Fprintf(os.Stderr, "Usage: %s [OPTION]\n", os.Args[0])
-	fmt.Fprintf(os.Stderr, "  -s sample\n")
-	fmt.Fprintf(os.Stderr, "    	sample \n")
+	usage := ""
+	usage += "Usage: %s [OPTION]\n"
+	usage += "  -s sample\n"
+	usage += "    	sample \n"
+	_, err := fmt.Fprintf(os.Stderr, usage)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(2)
+	}
 }
