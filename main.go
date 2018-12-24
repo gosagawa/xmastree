@@ -11,17 +11,13 @@ import (
 func main() {
 
 	var (
-		sample = flag.String("s", "sample", "sampele text")
+		size  = flag.Int("size", 8, "size")
+		speed = flag.Int("speed", 100, "speed")
 	)
 	flag.Usage = usage
 	flag.Parse()
 
-	if *sample == "something invalid" {
-		usage()
-		os.Exit(2)
-	}
-
-	xmastree.Display()
+	xmastree.Display(*size, *speed)
 }
 
 func usage() {

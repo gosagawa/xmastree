@@ -21,20 +21,18 @@ type Tree struct {
 	TotalHeight int
 }
 
-func Display() {
+func Display(size int, speed int) {
 
 	maxWidth := 0
+	maxHeight := size*2 + 9
 
-	displayStep := 15
-	maxHeight := displayStep*2 + 9
-
-	for i := 0; i < displayStep; i++ {
+	for i := 0; i < size; i++ {
 		if i != 0 {
 			fmt.Fprint(os.Stdout, fmt.Sprintf("\033[%vA", maxHeight))
 		}
 		tree := newTree(i*2+5, i+1, 2, maxHeight)
 		tree.display()
-		time.Sleep(50 * time.Millisecond)
+		time.Sleep(time.Duration(speed) * time.Millisecond)
 		maxWidth = tree.MaxWidth
 	}
 
