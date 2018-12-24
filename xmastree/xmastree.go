@@ -25,13 +25,16 @@ func Display() {
 
 	maxWidth := 0
 
-	for i := 0; i < 8; i++ {
+	displayStep := 15
+	maxHeight := displayStep*2 + 9
+
+	for i := 0; i < displayStep; i++ {
 		if i != 0 {
-			fmt.Fprint(os.Stdout, "\033[25A")
+			fmt.Fprint(os.Stdout, fmt.Sprintf("\033[%vA", maxHeight))
 		}
-		tree := newTree(i*2+5, i+1, 2, 25)
+		tree := newTree(i*2+5, i+1, 2, maxHeight)
 		tree.display()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
 		maxWidth = tree.MaxWidth
 	}
 
