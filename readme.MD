@@ -5,7 +5,7 @@ This is the application for display Christmas Tree on your cli console.
 # usage
 
 ```
-go get github.com/gosagawa/xmastree
+go get -u github.com/gosagawa/xmastree
 xmastree
 ```
 ![xmastree](https://user-images.githubusercontent.com/11145035/50401527-94a6d980-07d2-11e9-9320-84d87261e16b.gif)
@@ -20,4 +20,4 @@ Usage: xmastree: [OPTION]
     	size of the tree. Default is 8.
   -speed speed
     	speed of display tree. Default is 100.
-```
+```:
