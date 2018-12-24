@@ -22,9 +22,11 @@ func main() {
 
 func usage() {
 	usage := ""
-	usage += "Usage: %s [OPTION]\n"
-	usage += "  -s sample\n"
-	usage += "    	sample \n"
+	usage += "Usage: xmastree: [OPTION]\n"
+	usage += "  -size size\n"
+	usage += "    	size of the tree. Default is 8. \n"
+	usage += "  -speed speed\n"
+	usage += "    	speed of display tree. Default is 100. \n"
 	_, err := fmt.Fprintf(os.Stderr, usage)
 	if err != nil {
 		fmt.Println(err)
