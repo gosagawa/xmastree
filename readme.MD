@@ -8,6 +8,7 @@ This is the application for dispaly Christmas Tree on your cli console.
 go get github.com/gosagawa/xmastree
 xmastree
 ```
+![xmastree](https://user-images.githubusercontent.com/11145035/50401527-94a6d980-07d2-11e9-9320-84d87261e16b.gif)
 
 # option
 
