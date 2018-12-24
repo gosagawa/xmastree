@@ -2,25 +2,33 @@ package xmastree
 
 import (
 	"fmt"
-	"os"
 	"time"
 )
 
 const (
-	EscapeRed    = "\033[31m"
-	EscapeGreen  = "\033[32m"
+	// EscapeRed display red color
+	EscapeRed = "\033[31m"
+
+	// EscapeGreen  display green color
+	EscapeGreen = "\033[32m"
+
+	// EscapeYellow display Yellow color
 	EscapeYellow = "\033[33m"
-	EscapeReset  = "\033[0m"
+
+	// EscapeReset  reset color
+	EscapeReset = "\033[0m"
 )
 
+//Tree is Christmas tree
 type Tree struct {
-	MaxWidth    int
-	LeafHeight  int
-	StemWidth   int
-	StemHeight  int
-	TotalHeight int
+	MaxWidth    int // Mas display Width
+	LeafHeight  int // Leaf height
+	StemWidth   int // stem width
+	StemHeight  int // stem height
+	TotalHeight int // total height:
 }
 
+//Display the tree
 func Display(size int, speed int) {
 
 	maxWidth := 0
@@ -28,7 +36,7 @@ func Display(size int, speed int) {
 
 	for i := 0; i < size; i++ {
 		if i != 0 {
-			fmt.Fprint(os.Stdout, fmt.Sprintf("\033[%vA", maxHeight))
+			fmt.Printf("\033[%vA", maxHeight)
 		}
 		tree := newTree(i*2+5, i+1, 2, maxHeight)
 		tree.display()
@@ -36,7 +44,7 @@ func Display(size int, speed int) {
 		maxWidth = tree.MaxWidth
 	}
 
-	fmt.Fprint(os.Stdout, "\033[1A")
+	fmt.Print("\033[1A")
 	fmt.Print(EscapeYellow)
 
 	spaceLength := (maxWidth - 20) / 2
