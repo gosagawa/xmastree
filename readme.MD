@@ -1,4 +1,4 @@
-# What is this ?
+# xmastree [![Build Status](https://travis-ci.com/gosagawa/xmastree.svg?branch=master)](https://travis-ci.com/gosagawa/xmastree)
 
 This is the application for dispaly Christmas Tree on your cli console.
 
