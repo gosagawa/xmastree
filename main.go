@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/gosagawa/xmastree/xmastree"
 )
 
 func main() {
@@ -19,8 +21,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	fmt.Println("hello world")
-
+	xmastree.Display()
 }
 
 func usage() {
