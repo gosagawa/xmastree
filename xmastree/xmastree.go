@@ -22,6 +22,9 @@ type Tree struct {
 }
 
 func Display() {
+
+	maxWidth := 0
+
 	for i := 0; i < 8; i++ {
 		if i != 0 {
 			fmt.Fprint(os.Stdout, "\033[25A")
@@ -29,10 +32,16 @@ func Display() {
 		tree := newTree(i*2+5, i+1, 2, 25)
 		tree.display()
 		time.Sleep(100 * time.Millisecond)
+		maxWidth = tree.MaxWidth
 	}
 
+	fmt.Fprint(os.Stdout, "\033[1A")
 	fmt.Print(EscapeYellow)
+
+	spaceLength := (maxWidth - 20) / 2
+	echoString(" ", spaceLength)
 	fmt.Println("Merry, Christmas !!!")
+	echoString(" ", spaceLength)
 	fmt.Println(EscapeReset)
 }
 
@@ -50,9 +59,11 @@ func newTree(leafHeight int, stemWidth int, stemHeight int, totalHeight int) *Tr
 
 func (t *Tree) display() {
 
+	echoString("\r\n", t.TotalHeight-t.LeafHeight-t.StemHeight-3)
+
 	fmt.Print(EscapeGreen)
 	for i := 0; i < t.LeafHeight; i++ {
-		leafAmount := i*2 + 1
+		leafAmount := i*2 + 1 - (i/5)*4
 		spaceLength := (t.MaxWidth - leafAmount) / 2
 		echoString(" ", spaceLength)
 		echoString("¥", leafAmount)
@@ -76,7 +87,8 @@ func (t *Tree) display() {
 	echoString(" ", spaceLength)
 	fmt.Println("")
 
-	echoString("\r\n", t.TotalHeight-t.LeafHeight-t.StemHeight-1)
+	echoString("\r\n", 2)
+
 }
 
 func echoString(str string, amount int) {
