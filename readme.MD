@@ -20,4 +20,4 @@ Usage: xmastree: [OPTION]
     	size of the tree. Default is 8.
   -speed speed
     	speed of display tree. Default is 100.
-```:
+```
