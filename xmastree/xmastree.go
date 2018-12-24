@@ -22,15 +22,18 @@ type Tree struct {
 }
 
 func Display() {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 8; i++ {
 		if i != 0 {
-			fmt.Fprint(os.Stdout, "\033[13A")
+			fmt.Fprint(os.Stdout, "\033[25A")
 		}
 		tree := newTree(i*2+5, i+1, 2, 25)
 		tree.display()
 		time.Sleep(100 * time.Millisecond)
 	}
-	fmt.Fprint(os.Stdout, "\033[13A")
+
+	fmt.Print(EscapeYellow)
+	fmt.Println("Merry, Christmas !!!")
+	fmt.Println(EscapeReset)
 }
 
 func newTree(leafHeight int, stemWidth int, stemHeight int, totalHeight int) *Tree {
@@ -73,11 +76,7 @@ func (t *Tree) display() {
 	echoString(" ", spaceLength)
 	fmt.Println("")
 
-	fmt.Print(EscapeYellow)
-	fmt.Println("Merry, Christmas !!!")
-	fmt.Println(EscapeReset)
-
-	echoString("\r", t.TotalHeight-t.LeafHeight-t.StemHeight-2)
+	echoString("\r\n", t.TotalHeight-t.LeafHeight-t.StemHeight-1)
 }
 
 func echoString(str string, amount int) {
