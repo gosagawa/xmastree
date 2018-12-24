@@ -1,6 +1,10 @@
 package xmastree
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"time"
+)
 
 const (
 	EscapeRed    = "\033[31m"
@@ -10,23 +14,31 @@ const (
 )
 
 type Tree struct {
-	MaxWidth   int
-	LeafHeight int
-	StemWidth  int
-	StemHeight int
+	MaxWidth    int
+	LeafHeight  int
+	StemWidth   int
+	StemHeight  int
+	TotalHeight int
 }
 
 func Display() {
-	tree := newTree(5, 1, 2)
-	tree.display()
-
+	for i := 0; i < 5; i++ {
+		if i != 0 {
+			fmt.Fprint(os.Stdout, "\033[13A")
+		}
+		tree := newTree(i*2+5, i+1, 2, 25)
+		tree.display()
+		time.Sleep(100 * time.Millisecond)
+	}
+	fmt.Fprint(os.Stdout, "\033[13A")
 }
 
-func newTree(leafHeight int, stemWidth int, stemHeight int) *Tree {
+func newTree(leafHeight int, stemWidth int, stemHeight int, totalHeight int) *Tree {
 	tree := Tree{
-		LeafHeight: leafHeight,
-		StemWidth:  stemWidth,
-		StemHeight: stemHeight,
+		LeafHeight:  leafHeight,
+		StemWidth:   stemWidth,
+		StemHeight:  stemHeight,
+		TotalHeight: totalHeight,
 	}
 
 	tree.MaxWidth = tree.LeafHeight*2 + 1
@@ -64,6 +76,8 @@ func (t *Tree) display() {
 	fmt.Print(EscapeYellow)
 	fmt.Println("Merry, Christmas !!!")
 	fmt.Println(EscapeReset)
+
+	echoString("\r", t.TotalHeight-t.LeafHeight-t.StemHeight-2)
 }
 
 func echoString(str string, amount int) {
