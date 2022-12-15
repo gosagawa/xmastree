@@ -5,7 +5,7 @@ This is the application for display Christmas Tree on your cli console.
 # usage
 
 ```
-go get -u github.com/gosagawa/xmastree
+go install github.com/gosagawa/xmastree@latest
 xmastree
 ```
 
