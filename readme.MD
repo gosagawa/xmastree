@@ -1,5 +1,4 @@
-# xmastree [![Build Status](https://travis-ci.com/gosagawa/xmastree.svg?branch=master)](https://travis-ci.com/gosagawa/xmastree)
-
+# xmastree
 This is the application for display Christmas Tree on your cli console.
 
 # usage
